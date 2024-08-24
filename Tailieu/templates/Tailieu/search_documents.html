@@ -1,0 +1,40 @@
+{% extends "Tailieu/layouts/header.html" %}
+{% load static %}
+{% block content %}
+
+<div class="container mt-5">
+    <h2 class="text-center">Tìm kiếm tài liệu</h2>
+    <form method="GET" class="mb-3">
+        <div class="input-group">
+            <input type="text" class="form-control" name="query" placeholder="Nhập từ khóa tìm kiếm">
+            <button class="btn btn-primary" type="submit">Tìm kiếm</button>
+        </div>
+    </form>
+    {% if results %}
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Tiêu đề</th>
+                    <th>Ngày</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for result in results %}
+                    <tr>
+                        <td>{{ result.id }}</td>
+                        <td>{{ result.title }}</td>
+                        <td>{{ result.date }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p class="text-center">Không tìm thấy tài liệu nào.</p>
+    {% endif %}
+</div>
+
+{% endblock %}
+{% block extra_css %}
+    <!-- Add custom CSS here -->
+{% endblock %}

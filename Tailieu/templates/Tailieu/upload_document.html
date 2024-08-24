@@ -1,0 +1,26 @@
+{% extends "Tailieu/layouts/header.html" %}
+{% load static %}
+{% block content %}
+
+<div class="container mt-5">
+    <h2 class="text-center">Tải lên tài liệu</h2>
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label for="title" class="form-label">Tiêu đề</label>
+            <input type="text" class="form-control" id="title" name="title" required>
+        </div>
+        <div class="mb-3">
+            <label for="document" class="form-label">Chọn tệp tài liệu</label>
+            <input type="file" class="form-control" id="document" name="document" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Tải lên</button>
+        {% if success %}
+            <div class="alert alert-success mt-3">Tài liệu đã được tải lên thành công!</div>
+        {% endif %}
+    </form>
+</div>
+{% endblock %}
+{% block extra_css %}
+    <!-- Add custom CSS here -->
+{% endblock %}

@@ -1,0 +1,67 @@
+{% extends "Tailieu/layouts/header.html" %}
+{% load static %}
+{% block content %}
+
+<div class="container mt-5">
+    <div class="row">
+        <!-- Sidebar -->
+        <div class="col-md-2">
+            {% include 'Tailieu/layouts/sidebar.html' %}
+        </div>
+        <!-- Main Content -->
+        <div class="col-md-9">
+            <!-- Navbar -->
+            {% include 'Tailieu/layouts/navbar.html' %}
+            
+            <!-- Card Content -->
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="text-center">Tài liệu nội bộ</h2>
+                </div>
+                <div class="card-body">
+                    <div class="mb-3 d-flex justify-content-between align-items-center">
+                        <div>
+                            <a href="{% url 'add_internal_document' %}" class="btn btn-primary btn-lg">Thêm Tài Liệu</a>
+                        </div>
+                        <!-- Search form can be added here if needed -->
+                    </div>
+                    
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Tiêu đề</th>
+                                <th>Ngày nhận</th>
+                                <th>Phòng ban</th>
+                                <th>Trạng thái</th>
+                                <th>Hành động</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for doc in documents %}
+                                <tr>
+                                    <td>{{ doc.id }}</td>
+                                    <td>{{ doc.title }}</td>
+                                    <td>{{ doc.date_received }}</td>
+                                    <td>{{ doc.department }}</td>
+                                    <td>{{ doc.status }}</td>
+                                    <td>
+                                        <a href="{% static doc.file_url %}" class="btn btn-info btn-sm">Tải về</a>
+                                        <a href="{% url 'edit_internal_document' doc.id %}" class="btn btn-warning btn-sm">Sửa</a>
+                                        <a href="{% url 'delete_internal_document' doc.id %}" class="btn btn-danger btn-sm" onclick="return confirm('Bạn có chắc chắn muốn xóa tài liệu này không?');">Xóa</a>
+                                    </td>
+                                </tr>
+                            {% empty %}
+                                <tr>
+                                    <td colspan="6" class="text-center">Không có tài liệu nào phù hợp.</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

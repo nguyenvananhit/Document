@@ -1,0 +1,67 @@
+{% extends "Tailieu/layouts/header.html" %}
+{% load static %}
+{% block content %}
+<div class="container mt-5">
+    <div class="row">
+        <!-- Sidebar -->
+        <div class="col-md-2">
+            {% include 'Tailieu/layouts/sidebar.html' %}
+        </div>
+        <!-- Main Content -->
+        <div class="col-md-9">
+            <!-- Navbar -->
+            {% include 'Tailieu/layouts/navbar.html' %}
+            <div class="card mt-4">
+                <div class="card-header">
+                    <h2 class="text-center">Thêm Tài Liệu Đến</h2>
+                </div>
+                <div class="card-body">
+                    <form method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="mb-3">
+                            <label for="title" class="form-label">Tiêu đề</label>
+                            <input type="text" class="form-control" id="title" name="title" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="date_received" class="form-label">Ngày nhận</label>
+                            <input type="date" class="form-control" id="date_received" name="date_received" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="sender" class="form-label">Người gửi</label>
+                            <input type="text" class="form-control" id="sender" name="sender" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="file" class="form-label">Chọn tệp tài liệu</label>
+                            <input type="file" class="form-control" id="file" name="file" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-lg">Thêm Tài Liệu</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% if success %}
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+    Swal.fire({
+        icon: 'success',
+        title: 'Thêm tài liệu thành công!',
+        text: 'Tài liệu đã được thêm vào hệ thống.',
+        confirmButtonText: 'Đóng'
+    });
+</script>
+{% elif error %}
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+    Swal.fire({
+        icon: 'error',
+        title: 'Lỗi!',
+        text: '{{ error }}',
+        confirmButtonText: 'Đóng'
+    });
+</script>
+{% endif %}
+
+{% endblock %}

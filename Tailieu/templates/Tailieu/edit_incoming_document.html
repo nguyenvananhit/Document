@@ -1,0 +1,44 @@
+{% extends "Tailieu/layouts/header.html" %}
+{% load static %}
+{% block content %}
+<div class="container mt-5">
+    <div class="row">
+        <!-- Sidebar -->
+        <div class="col-md-2">
+            {% include 'Tailieu/layouts/sidebar.html' %}
+        </div>
+        <!-- Main Content -->
+        <div class="col-md-9">
+            <!-- Navbar -->
+            {% include 'Tailieu/layouts/navbar.html' %}
+            <div class="card mt-4">
+                <div class="card-header">
+                    <h2 class="text-center">Sửa Tài Liệu</h2>
+                </div>
+                <div class="card-body">
+                    <form method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="mb-3">
+                            <label for="title" class="form-label">Tiêu đề</label>
+                            <input type="text" class="form-control" id="title" name="title" value="{{ document.title }}" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="date_received" class="form-label">Ngày nhận</label>
+                            <input type="date" class="form-control" id="date_received" name="date_received" value="{{ document.date_received }}" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="sender" class="form-label">Người gửi</label>
+                            <input type="text" class="form-control" id="sender" name="sender" value="{{ document.sender }}" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="file" class="form-label">Chọn tệp tài liệu mới (nếu có)</label>
+                            <input type="file" class="form-control" id="file" name="file">
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-lg">Cập nhật Tài Liệu</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

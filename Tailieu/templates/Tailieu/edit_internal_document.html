@@ -1,0 +1,52 @@
+{% extends "Tailieu/layouts/header.html" %}
+{% block content %}
+
+<div class="container mt-5">
+    <div class="row">
+        <!-- Sidebar -->
+        <div class="col-md-2">
+            {% include 'Tailieu/layouts/sidebar.html' %}
+        </div>
+        <!-- Main Content -->
+        <div class="col-md-9">
+            <!-- Navbar -->
+            {% include 'Tailieu/layouts/navbar.html' %}
+            
+            <!-- Card Content -->
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="text-center">Sửa Tài Liệu Nội Bộ</h2>
+                </div>
+                <div class="card-body">
+                    <form method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <input type="hidden" name="id" value="{{ document.id }}">
+                        <div class="mb-3">
+                            <label for="title" class="form-label">Tiêu đề</label>
+                            <input type="text" id="title" name="title" class="form-control" value="{{ document.title }}" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="date_received" class="form-label">Ngày nhận</label>
+                            <input type="date" id="date_received" name="date_received" class="form-control" value="{{ document.date_received }}" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="department" class="form-label">Phòng ban</label>
+                            <input type="text" id="department" name="department" class="form-control" value="{{ document.department }}" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="status" class="form-label">Trạng thái</label>
+                            <input type="text" id="status" name="status" class="form-control" value="{{ document.status }}" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="file" class="form-label">Tải lên file (chọn nếu muốn thay đổi)</label>
+                            <input type="file" id="file" name="file" class="form-control">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Cập nhật</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

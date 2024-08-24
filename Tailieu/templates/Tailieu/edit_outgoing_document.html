@@ -1,0 +1,49 @@
+{% extends "Tailieu/layouts/header.html" %}
+{% load static %}
+{% block content %}
+
+<div class="container mt-5">
+    <div class="row">
+        <!-- Sidebar -->
+        <div class="col-md-2">
+            {% include 'Tailieu/layouts/sidebar.html' %}
+        </div>
+        <!-- Main Content -->
+        <div class="col-md-9">
+            <!-- Navbar -->
+            {% include 'Tailieu/layouts/navbar.html' %}
+            
+            <!-- Card Content -->
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="text-center">Chỉnh Sửa Tài Liệu Đi</h2>
+                </div>
+                <div class="card-body">
+                    <form method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="mb-3">
+                            <label for="title" class="form-label">Tiêu đề</label>
+                            <input type="text" id="title" name="title" class="form-control" value="{{ document.title }}" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="date_sent" class="form-label">Ngày gửi</label>
+                            <input type="date" id="date_sent" name="date_sent" class="form-control" value="{{ document.date_sent }}" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="receiver" class="form-label">Người nhận</label>
+                            <input type="text" id="receiver" name="receiver" class="form-control" value="{{ document.receiver }}" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="file" class="form-label">Tệp tin mới</label>
+                            <input type="file" id="file" name="file" class="form-control">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Cập nhật</button>
+                    </form>
+                    <a href="{% static document.file_url %}" class="btn btn-info mt-3">Tải về tệp hiện tại</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

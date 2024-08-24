@@ -1,0 +1,36 @@
+{% extends "Tailieu/layouts/header.html" %}
+{% load static %}
+{% block content %}
+
+<div class="container mt-5">
+    <div class="row">
+        <!-- Sidebar -->
+        <div class="col-md-2">
+            {% include 'Tailieu/layouts/sidebar.html' %}
+        </div>
+        <!-- Main Content -->
+        <div class="col-md-10">
+            <!-- Navbar -->
+            {% include 'Tailieu/layouts/navbar.html' %}
+            
+            <!-- Card Content -->
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="text-center">Thống Kê</h2>
+                </div>
+                <div class="card-body">
+                    <h3>Tổng Quan</h3>
+                    <ul>
+                        <li>Tổng số tài liệu đến: {{ total_incoming_docs }}</li>
+                        <li>Tổng số tài liệu đi: {{ total_outgoing_docs }}</li>
+                        <li>Tổng số tài liệu nội bộ: {{ total_internal_docs }}</li>
+                        <li>Tổng số hợp đồng: {{ total_contracts }}</li>
+                        <li>Tổng số người dùng: {{ total_users }}</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

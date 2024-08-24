@@ -1,0 +1,23 @@
+{% extends "Tailieu/layouts/header.html" %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="text-center">Chi Tiết Tài Liệu Đến</h2>
+                </div>
+                <div class="card-body">
+                    <p><strong>ID:</strong> {{ document.id }}</p>
+                    <p><strong>Tiêu đề:</strong> {{ document.title }}</p>
+                    <p><strong>Ngày nhận:</strong> {{ document.date_received }}</p>
+                    <p><strong>Người gửi:</strong> {{ document.sender }}</p>
+                    <a href="{% url 'edit_incoming_document' document.id %}" class="btn btn-warning">Sửa</a>
+                    <a href="{% url 'incoming_documents' %}" class="btn btn-secondary">Quay lại</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

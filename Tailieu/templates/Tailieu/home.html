@@ -1,0 +1,101 @@
+{% extends "Tailieu/layouts/header.html" %}
+
+{% load static %}
+{% block content %}
+
+
+<div class="container-fluid mt-5">
+    <div class="row">
+        <!-- Sidebar -->
+        <div class="col-md-2">
+            {% include 'Tailieu/layouts/sidebar.html' %}
+        </div>
+        {% include 'Tailieu/layouts/navbar.html' %}
+        <!-- Main Content -->
+        <div class="col-md-9">
+            <!-- User Greeting -->
+            <div class="row mb-4">
+                <div class="col">
+                    <h2 class="text-center">Chào mừng, {{ user_email }}!</h2>
+                    <p class="text-center">Chúng tôi rất vui được chào đón bạn đến với hệ thống quản lý tài liệu.</p>
+                </div>
+            </div>
+
+            <!-- Document Overview -->
+            <div class="row mb-4">
+                <div class="col-md-6 col-lg-3 mb-3">
+                    <div class="card text-white bg-primary hover-scale">
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                <i class="fas fa-inbox"></i> Tài liệu đến
+                            </h5>
+                            <p class="card-text">{{ incoming_docs_count }} tài liệu</p>
+                            <a href="{% url 'incoming_documents' %}" class="btn btn-light">Xem chi tiết</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3 mb-3">
+                    <div class="card text-white bg-success hover-scale">
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                <i class="fas fa-paper-plane"></i> Tài liệu đi
+                            </h5>
+                            <p class="card-text">{{ outgoing_docs_count }} tài liệu</p>
+                            <a href="{% url 'outgoing_documents' %}" class="btn btn-light">Xem chi tiết</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3 mb-3">
+                    <div class="card text-white bg-warning hover-scale">
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                <i class="fas fa-file-alt"></i> Tài liệu nội bộ
+                            </h5>
+                            <p class="card-text">{{ internal_docs_count }} tài liệu</p>
+                            <a href="{% url 'internal_documents' %}" class="btn btn-light">Xem chi tiết</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3 mb-3">
+                    <div class="card text-white bg-danger hover-scale">
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                <i class="fas fa-file-contract"></i> Hợp đồng
+                            </h5>
+                            <p class="card-text">{{ contracts_count }} hợp đồng</p>
+                            <a href="{% url 'contracts' %}" class="btn btn-light">Xem chi tiết</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Actions -->
+            <div class="row mb-4">
+                <div class="col">
+                    <h3 class="text-center">Hành động nhanh</h3>
+                    <div class="d-flex justify-content-around flex-wrap">
+                      
+                        <a href="{% url 'search_documents' %}" class="btn btn-secondary mb-2 mb-md-0">
+                            <i class="fas fa-search"></i> Tìm kiếm tài liệu
+                        </a>
+                        <a href="{% url 'view_documents' %}" class="btn btn-info mb-2 mb-md-0">
+                            <i class="fas fa-eye"></i> Xem tài liệu
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Notifications or Recent Activities -->
+            <div class="row">
+                <div class="col">
+                    <h3 class="text-center">Thông báo</h3>
+                    <div class="alert alert-info">
+                        <strong>Chú ý:</strong> Hãy kiểm tra các tài liệu mới và thông báo hệ thống để cập nhật các hoạt động gần đây.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

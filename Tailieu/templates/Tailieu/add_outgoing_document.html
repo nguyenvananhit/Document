@@ -1,0 +1,53 @@
+{% extends "Tailieu/layouts/header.html" %}
+{% load static %}
+{% block content %}
+
+<div class="container mt-5">
+    <div class="row">
+        <!-- Sidebar -->
+        <div class="col-md-2">
+            {% include 'Tailieu/layouts/sidebar.html' %}
+        </div>
+        <!-- Main Content -->
+        <div class="col-md-9">
+            <!-- Navbar -->
+            {% include 'Tailieu/layouts/navbar.html' %}
+            
+            <!-- Card Content -->
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="text-center">Thêm Tài Liệu Đi</h2>
+                </div>
+                <div class="card-body">
+                    <form method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="mb-3">
+                            <label for="title" class="form-label">Tiêu đề</label>
+                            <input type="text" id="title" name="title" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="date_sent" class="form-label">Ngày gửi</label>
+                            <input type="date" id="date_sent" name="date_sent" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="receiver" class="form-label">Người nhận</label>
+                            <input type="text" id="receiver" name="receiver" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="file" class="form-label">Tệp tin</label>
+                            <input type="file" id="file" name="file" class="form-control" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Lưu</button>
+                    </form>
+                    {% if success %}
+                        <div class="alert alert-success mt-3">Tài liệu đã được thêm thành công.</div>
+                    {% elif error %}
+                        <div class="alert alert-danger mt-3">{{ error }}</div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

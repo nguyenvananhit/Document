@@ -1,0 +1,32 @@
+{% extends "Tailieu/layouts/header.html" %}
+{% load static %}
+{% block content %}
+
+<div class="container mt-5">
+    <div class="row">
+        <!-- Sidebar -->
+        <div class="col-md-2">
+            {% include 'Tailieu/layouts/sidebar.html' %}
+        </div>
+        <!-- Main Content -->
+        <div class="col-md-9">
+            <!-- Navbar -->
+            {% include 'Tailieu/layouts/navbar.html' %}
+            
+            <!-- Card Content -->
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="text-center">Thông tin cá nhân</h2>
+                </div>
+                <div class="card-body">
+                    <p><strong>Username:</strong> {{ username }}</p>
+                    <p><strong>Email:</strong> {{ email }}</p>
+                    <p><strong>Role:</strong> {{ role }}</p>
+                    <p><strong>Status:</strong> {{ status }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

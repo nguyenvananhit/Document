@@ -1,0 +1,61 @@
+{% extends "Tailieu/layouts/header.html" %}
+{% load static %}
+{% block content %}
+
+<div class="container mt-5">
+    <div class="row">
+        <!-- Sidebar -->
+        <div class="col-md-2">
+            {% include 'Tailieu/layouts/sidebar.html' %}
+        </div>
+        <!-- Main Content -->
+        <div class="col-md-9">
+            <!-- Navbar -->
+            {% include 'Tailieu/layouts/navbar.html' %}
+            
+            <!-- Card Content -->
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="text-center">Chỉnh Sửa Hợp Đồng</h2>
+                </div>
+                <div class="card-body">
+                    <form method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="mb-3">
+                            <label for="title" class="form-label">Tiêu đề</label>
+                            <input type="text" class="form-control" id="title" name="title" value="{{ contract.title }}" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="start_date" class="form-label">Ngày bắt đầu</label>
+                            <input type="date" class="form-control" id="start_date" name="start_date" value="{{ contract.start_date }}" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="end_date" class="form-label">Ngày kết thúc</label>
+                            <input type="date" class="form-control" id="end_date" name="end_date" value="{{ contract.end_date }}" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="document_id" class="form-label">Mã tài liệu</label>
+                            <input type="text" class="form-control" id="document_id" name="document_id" value="{{ contract.document_id }}" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="responsible_user_id" class="form-label">Nhân viên phụ trách</label>
+                            <input type="text" class="form-control" id="responsible_user_id" name="responsible_user_id" value="{{ contract.responsible_user_id }}" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="file" class="form-label">Tài liệu (nếu có)</label>
+                            <input type="file" class="form-control" id="file" name="file">
+                        </div>
+                        <div class="mb-3">
+                            <label for="current_file" class="form-label">Tài liệu hiện tại</label>
+                            <a href="{{ contract.file_url }}" target="_blank">{{ contract.file_url }}</a>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Cập nhật</button>
+                        <a href="{% url 'contracts' %}" class="btn btn-secondary">Quay lại</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

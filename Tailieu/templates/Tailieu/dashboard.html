@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+        }
+        .sidebar {
+            height: 100vh;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 250px;
+        }
+        .sidebar .nav-item {
+            margin-bottom: 20px;
+        }
+        .sidebar .nav-link {
+            color: #333;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+        }
+        .sidebar .nav-link i {
+            margin-right: 10px;
+            color: #007bff;
+        }
+        .sidebar .nav-link:hover {
+            background-color: #f8f9fa;
+            border-radius: 5px;
+        }
+        .sidebar .section-title {
+            font-size: 14px;
+            color: #888;
+            text-transform: uppercase;
+            margin-top: 30px;
+            margin-bottom: 10px;
+        }
+        .content {
+            margin-left: 250px;
+            padding: 20px;
+        }
+        .navbar-custom {
+            background-color: #007bff;
+            color: #fff;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .navbar-custom .navbar-brand,
+        .navbar-custom .nav-link {
+            color: #fff;
+        }
+        .navbar-custom .nav-link:hover {
+            color: #f1f1f1;
+        }
+        .search-box {
+            position: relative;
+        }
+        .search-box input {
+            border-radius: 20px;
+            padding-right: 40px;
+        }
+        .search-box .fa-search {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #007bff;
+        }
+    </style>
+</head>
+<body>
+    <div class="d-flex">
+        <div class="sidebar">
+            <div class="section-title">Quản Lý Công Văn</div>
+            <div class="nav flex-column">
+                <a class="nav-link" href="#"><i class="fas fa-inbox"></i> Văn bản đến</a>
+                <a class="nav-link" href="#"><i class="fas fa-envelope-open-text"></i> Văn bản đi</a>
+                <a class="nav-link" href="#"><i class="fas fa-file-alt"></i> Nội bộ đi</a>
+                <a class="nav-link" href="#"><i class="fas fa-file-import"></i> Nội bộ đến</a>
+                <a class="nav-link" href="#"><i class="fas fa-share-square"></i> Chia sẻ đến</a>
+                <a class="nav-link" href="#"><i class="fas fa-share"></i> Chia sẻ đi</a>
+                <a class="nav-link" href="#"><i class="fas fa-share-alt"></i> Chia sẻ nội bộ đi</a>
+                <a class="nav-link" href="#"><i class="fas fa-share-alt-square"></i> Chia sẻ nội bộ đến</a>
+                <a class="nav-link" href="#"><i class="fas fa-search"></i> Tìm kiếm</a>
+            </div>
+
+            <div class="section-title">Tài Liệu Cá Nhân</div>
+            <div class="nav flex-column">
+                <a class="nav-link" href="#"><i class="fas fa-search"></i> Tìm kiếm</a>
+                <a class="nav-link" href="#"><i class="fas fa-archive"></i> Kho tài liệu</a>
+                <a class="nav-link" href="#"><i class="fas fa-folder"></i> Thư mục riêng</a>
+                <a class="nav-link" href="#"><i class="fas fa-clock"></i> Gần đây</a>
+                <a class="nav-link" href="#"><i class="fas fa-bookmark"></i> Đánh dấu riêng</a>
+                <a class="nav-link" href="#"><i class="fas fa-share-alt"></i> Chia sẻ</a>
+                <a class="nav-link" href="#"><i class="fas fa-user-shield"></i> Cấp quyền</a>
+                <a class="nav-link" href="#"><i class="fas fa-paper-plane"></i> Duyệt phát hành</a>
+                <a class="nav-link" href="#"><i class="fas fa-trash-alt"></i> Đã xóa</a>
+                <a class="nav-link" href="#"><i class="fas fa-exclamation-circle"></i> Quá hạn</a>
+            </div>
+        </div>
+
+        <div class="content">
+            <nav class="navbar navbar-expand-lg navbar-custom">
+                <a class="navbar-brand" href="#">Dashboard</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#"><i class="fas fa-bell"></i> Thông báo</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#"><i class="fas fa-user"></i> Tài khoản</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#"><i class="fas fa-sign-out-alt"></i> Đăng xuất</a>
+                        </li>
+                    </ul>
+                    <form class="d-flex ms-3 search-box">
+                        <input class="form-control me-2" type="search" placeholder="Tìm kiếm" aria-label="Search">
+                        <i class="fas fa-search"></i>
+                    </form>
+                </div>
+            </nav>
+            <div class="container mt-4">
+                <h1>Chào mừng đến với Dashboard</h1>
+                <p>Đây là khu vực nội dung chính của bạn.</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/js/all.min.js"></script>
+</body>
+</html>
